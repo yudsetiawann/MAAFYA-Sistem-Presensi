@@ -1,45 +1,40 @@
-Sistem Presensi Sederhana (Java NetBeans & MySQL)
+Cara Instalasi Sistem Presensi Sekolah
 
-1. Deskripsi Singkat
-  Aplikasi Sistem Presensi Sederhana ini dikembangkan menggunakan Java (NetBeans) dan MySQL. Tujuan utama aplikasi ini adalah untuk memudahkan proses pencatatan kehadiran siswa dan pengelolaan data di lingkungan sekolah secara digital dan terstruktur.
+Kebutuhan Sistem
+- Java JDK (disarankan JDK 8 ke atas)
+- NetBeans IDE (disarankan versi 8 atau lebih baru)
+- MySQL Server
 
-2. Struktur Project
-  Project ini menggunakan konsep MVC (Model-View-Controller), sehingga memudahkan pengembangan dan maintenance aplikasi.
-Struktur package pada source code antara lain:
-    a. controller
-      Berisi file kontroler untuk mengatur logika aplikasi seperti PresensiController.java dan SiswaController.java.
-    b. model
-      Berisi kelas-kelas untuk pengelolaan data dan koneksi database, misalnya: DBConnection.java, Presensi.java, Kelas.java, Siswa.java, dll.
-    c. view
-      Berisi tampilan antarmuka pengguna (form) seperti:
-        - LoginForm
-        - DashboardAdmin
-        - DashboardGuru
-        - PresensiForm
-        - SiswaForm
-        - KelasForm
-        - UserForm
-        - LaporanView
+Langkah-langkah Instalasi
+- Clone Repository
+- Download atau clone repository ini ke komputer Anda:
+     git clone https://github.com/yudsetiawann/MAAFYA-Sistem-Presensi.git
+- Atau, download sebagai ZIP lalu extract.
 
-3. Fitur Utama
-    a. Login Sistem:
-      User dapat login sebagai admin atau guru untuk mengakses fitur sesuai hak akses.
-    b. Dashboard:
-      Tersedia dashboard khusus untuk admin maupun guru, menampilkan menu utama aplikasi.
-    Manajemen Siswa & Kelas:
-        - Admin dapat menambah, mengedit, menghapus data siswa dan kelas.
-        - Fitur filter dan pencarian data.
-    c. Presensi Siswa:
-      Admin dan Guru dapat mencatat kehadiran siswa per kelas, serta mengupdate status (Hadir, Izin, Sakit, Alpa).
-    d. Laporan Presensi:
-      Laporan kehadiran siswa dapat ditampilkan dan diekspor.
-    e. Manajemen User:
-      Admin dapat mengelola data user (username, password, role admin/guru).
+Import Project ke NetBeans
+- Buka NetBeans IDE.
+- Pilih menu File > Open Project.
+- Arahkan ke folder hasil clone/extract, pilih folder project ini, lalu klik Open Project.
 
-Tampilan Aplikasi
-    a. Login: Form login user dengan username & password.
-    b. Dashboard: Menu utama dengan navigasi ke fitur-fitur penting.
-    c. Input Data Siswa & Kelas: Form untuk input/edit data siswa dan kelas, dengan tabel data.
-    d. Presensi: Form pencatatan kehadiran per kelas & tanggal.
-    e. Laporan: Laporan kehadiran siswa yang dapat difilter berdasarkan kelas & tanggal.
-    f. Manajemen User: Input dan daftar user dengan pengaturan role.
+Konfigurasi Database
+- Pastikan MySQL sudah berjalan.
+- Buka aplikasi seperti phpMyAdmin atau MySQL Workbench.
+- Import file database sistem_presensi.sql ke MySQL:
+     Buat database baru (misal: presensi).
+     Import file sistem_presensi.sql ke database tersebut.
+
+Atur Koneksi Database pada Project
+- Buka file DBConnection.java (di folder src/model/).
+- Sesuaikan konfigurasi username, password, dan nama database sesuai setting MySQL di komputer Anda:
+     String url = "jdbc:mysql://localhost:3306/presensi";
+     String user = "root";
+     String password = "";
+- Simpan perubahan.
+- Build & Jalankan Aplikasi
+     Klik kanan pada project di NetBeans, pilih Clean and Build.
+     Klik kanan lagi, pilih Run untuk menjalankan aplikasi.
+     Login menggunakan akun yang tersedia (cek data user di database).
+
+Catatan
+- Jika terdapat error koneksi database, cek ulang konfigurasi pada DBConnection.java.
+- Pastikan semua dependency sudah tersedia di Library NetBeans.
